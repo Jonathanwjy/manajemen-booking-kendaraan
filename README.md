@@ -1,22 +1,19 @@
 # Sistem Manajemen Booking Kendaraan
 
-Aplikasi berbasis web untuk manajemen pemesanan (booking) kendaraan operasional tambang
-
-**Dikembangkan oleh:** Jonathan Wijaya
+Aplikasi berbasis web untuk manajemen pemesanan (booking) kendaraan operasional tambang. 
 
 ## 🛠️ Tech Stack & Requirements
 
 Pastikan environment lokal Anda memenuhi persyaratan berikut sebelum menjalankan aplikasi:
 
-* **PHP:** ^8.2
+* **PHP:** (8.2)
 * **Framework:** Laravel (12.0)
 * **Frontend:** React.js
 * **Database:** PostgreSQL (18.3)
 
 ## 🔑 Akun Testing (Database Seeder)
 
-Sistem ini menggunakan seeder untuk mengenerate data *dummy* beserta akun login. Berikut adalah kredensial yang dapat digunakan untuk masuk ke dalam sistem:
-
+Data Nama akun dan password
 | Role / Nama | Email | Password |
 | :--- | :--- | :--- |
 | **Approver 1 (Natan)** | natan@gmail.com | 12345678 |
