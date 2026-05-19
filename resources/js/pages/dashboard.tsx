@@ -26,7 +26,7 @@ const STATUS_LABELS: Record<string, string> = {
 
 const PIE_COLORS = [C.success, C.warning, C.primary, C.danger];
 
-const fmt = (n: any) => Number(n ?? 0).toLocaleString('en-US');
+const fmt = (n: number | string | null | undefined) => Number(n ?? 0).toLocaleString('en-US');
 
 function StatCard({ label, value, sub, color = C.primary }: { label: string; value: string | number; sub?: string; color?: string }) {
     return (
@@ -80,7 +80,12 @@ function StatCard({ label, value, sub, color = C.primary }: { label: string; val
     );
 }
 
-function ChartTooltip({ active, payload }: any) {
+interface TooltipPayloadItem {
+    name: string;
+    value: number;
+    payload: { fill?: string };
+}
+function ChartTooltip({ active, payload }: { active?: boolean; payload?: TooltipPayloadItem[] }) {
     if (!active || !payload?.length) return null;
     return (
         <div

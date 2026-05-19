@@ -1,12 +1,22 @@
 import { Button } from '@/components/ui/button';
 import AppLayout from '@/layouts/app-layout';
 import { BreadcrumbItem } from '@/types';
+import { Service } from '@/types/service';
 import { VehicleShowProps } from '@/types/vehicle';
 import { Head, Link } from '@inertiajs/react';
 import { Building, CarFront, Hash, History, Info, Settings, Tag, Wrench } from 'lucide-react';
 
 export default function ShowVehicle({ vehicle }: { vehicle: VehicleShowProps }) {
-    console.log('ISI DATA KENDARAAN:', vehicle);
+    // Add these interfaces near the top of the file (after imports)
+    interface VehicleUsage {
+        id: number;
+        created_at: string;
+        driver?: { name: string };
+        start_odometer: number;
+        end_odometer: number;
+        fuel_used: number;
+    }
+
     const breadcrumbs: BreadcrumbItem[] = [
         {
             title: 'Vehicle',
@@ -166,7 +176,7 @@ export default function ShowVehicle({ vehicle }: { vehicle: VehicleShowProps }) 
                                     </thead>
                                     <tbody className="divide-y">
                                         {vehicle.vehicle_usage && vehicle.vehicle_usage.length > 0 ? (
-                                            vehicle.vehicle_usage.map((usage: any) => (
+                                            vehicle.vehicle_usage.map((usage: VehicleUsage) => (
                                                 <tr key={usage.id} className="hover:bg-muted/50">
                                                     <td className="px-4 py-3">{formatDate(usage.created_at)}</td>
                                                     <td className="px-4 py-3 font-medium">{usage.driver?.name || '-'}</td>
@@ -205,7 +215,7 @@ export default function ShowVehicle({ vehicle }: { vehicle: VehicleShowProps }) 
                                     </thead>
                                     <tbody className="divide-y">
                                         {vehicle.service && vehicle.service.length > 0 ? (
-                                            vehicle.service.map((serviceItem: any) => (
+                                            vehicle.service.map((serviceItem: Service) => (
                                                 <tr key={serviceItem.id} className="hover:bg-muted/50">
                                                     <td className="px-4 py-3">{formatDate(serviceItem.service_date)}</td>
                                                     <td className="px-4 py-3">{serviceItem.odometer.toLocaleString('en-US')} km</td>
@@ -220,8 +230,8 @@ export default function ShowVehicle({ vehicle }: { vehicle: VehicleShowProps }) 
                                                             {serviceItem.status}
                                                         </span>
                                                     </td>
-                                                    <td className="max-w-[200px] truncate px-4 py-3" title={serviceItem.notes}>
-                                                        {serviceItem.notes || '-'}
+                                                    <td className="max-w-[200px] truncate px-4 py-3" title={serviceItem.notes ?? undefined}>
+                                                        {serviceItem.notes ?? '-'}
                                                     </td>
                                                     <td className="px-4 py-3">
                                                         {formatDate(serviceItem.next_service_date)} <br />
