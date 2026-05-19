@@ -1,6 +1,6 @@
 # Sistem Manajemen Booking Kendaraan
 
-Aplikasi berbasis web untuk manajemen pemesanan (booking) kendaraan operasional. Proyek ini dikembangkan sebagai bagian dari tahap *technical test* di PT. Serasan Sekundang Mandiri.
+Aplikasi berbasis web untuk manajemen pemesanan (booking) kendaraan operasional tambang
 
 **Dikembangkan oleh:** Jonathan Wijaya
 
